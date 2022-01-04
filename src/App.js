@@ -8,37 +8,53 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      items: [],
-      text: '',
-      show: true
+      show: true,
+      contacts: [],
+      contact: {text: ''},
     }
   }
+
+  contactHandler = (e) => {
+    this.setState({
+      contact: {
+        text: e.target.value
+      }
+    });
+  }
+  
+  contactSubmit = (e) => {
+    this.setState({
+      contacts: this.state.contact.concat(this.state.contactText),
+      contact : {text: ''} 
+    });
+  }
+  
   render(){
+    const {contacts, contact} = this.state;
     return(
       <main>
         <button>Edit</button>
-        <div>
-          <Contact />
-          {this.state.show && <div>
-            <form>
-              <label htmlFor='name'>Name</label>
-              <input name='name' id='name'></input>
-              <label htmlFor='email'>Email</label>
-              <input name='email' id='email'></input>
-              <label htmlFor='phone'>Phone</label>
-              <input name='phone' id='phone'></input>
-            </form>
-          </div>}
-        </div>
-        <div>
-          <Education />
+        <form>
+          <div>
+            <Contact items={contacts}/>
+            {this.state.show && 
+            <input id='contact' onChange={this.contactHandler} value={this.state.contactText}></input>}
+            <button type='button'>Add</button>
+          </div>
+          <div>
+            <Education />
+            {this.state.show && 
+            <input></input>}
 
-        </div>
-        
-        <div>
-          <Work />
+          </div>
+          <div>
+            <Work />
+            {this.state.show && 
+            <input></input>}
 
-        </div>
+          </div>
+          <button type='submit'>Submit</button>
+        </form>
       </main>
     )
   }
