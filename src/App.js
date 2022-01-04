@@ -5,15 +5,40 @@ import Work from './components/Work';
 
 
 class App extends Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
+    this.state = {
+      items: [],
+      text: '',
+      show: true
+    }
   }
   render(){
     return(
       <main>
-        <Contact />
-        <Education />
-        <Work />
+        <button>Edit</button>
+        <div>
+          <Contact />
+          {this.state.show && <div>
+            <form>
+              <label htmlFor='name'>Name</label>
+              <input name='name' id='name'></input>
+              <label htmlFor='email'>Email</label>
+              <input name='email' id='email'></input>
+              <label htmlFor='phone'>Phone</label>
+              <input name='phone' id='phone'></input>
+            </form>
+          </div>}
+        </div>
+        <div>
+          <Education />
+
+        </div>
+        
+        <div>
+          <Work />
+
+        </div>
       </main>
     )
   }
