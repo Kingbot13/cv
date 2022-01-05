@@ -11,11 +11,12 @@ class Contact extends Component {
 
 
     render(){
+        const {contacts} = this.props;
         return(
             <div>
-                <p>{this.props.name}</p>
-                <p>{this.props.email}</p>
-                <p>{this.props.phone}</p>
+                {contacts.map((info) =>{
+                    return <p key={info.id}>{info.text}</p>
+                })}
             </div>
         )
     }
