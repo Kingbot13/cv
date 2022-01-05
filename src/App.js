@@ -22,7 +22,7 @@ class App extends Component {
     });
   }
   
-  contactSubmit = (e) => {
+  addContact = (e) => {
     this.setState({
       contacts: this.state.contacts.concat(this.state.item),
       item : {text: ''} 
@@ -30,7 +30,7 @@ class App extends Component {
   }
   
   render(){
-    const {contacts, contact} = this.state;
+    const {contacts, item} = this.state;
     return(
       <main>
         <button>Edit</button>
@@ -38,7 +38,7 @@ class App extends Component {
           <div>
             <Contact items={contacts}/>
             {this.state.show && 
-            <input id='contact' onChange={this.handleChange} value={this.state.contactText}></input>}
+            <input id='contact' onChange={this.handleChange} value={item}></input>}
             <button type='button'>Add</button>
           </div>
           <div>
