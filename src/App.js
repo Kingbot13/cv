@@ -10,13 +10,13 @@ class App extends Component {
     this.state = {
       show: true,
       contacts: [],
-      contact: {text: ''},
+      item: {text: ''},
     }
   }
 
-  contactHandler = (e) => {
+  handleChange = (e) => {
     this.setState({
-      contact: {
+      item: {
         text: e.target.value
       }
     });
@@ -24,8 +24,8 @@ class App extends Component {
   
   contactSubmit = (e) => {
     this.setState({
-      contacts: this.state.contact.concat(this.state.contactText),
-      contact : {text: ''} 
+      contacts: this.state.contacts.concat(this.state.item),
+      item : {text: ''} 
     });
   }
   
@@ -38,7 +38,7 @@ class App extends Component {
           <div>
             <Contact items={contacts}/>
             {this.state.show && 
-            <input id='contact' onChange={this.contactHandler} value={this.state.contactText}></input>}
+            <input id='contact' onChange={this.handleChange} value={this.state.contactText}></input>}
             <button type='button'>Add</button>
           </div>
           <div>
