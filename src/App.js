@@ -15,6 +15,13 @@ class App extends Component {
         text: '',
         id: uniqid(),
       },
+      ed: [],
+      edItem: {
+        school: '',
+        degree: '',
+        years: '',
+        id: uniqid(),
+      }
     }
   }
 
@@ -37,8 +44,29 @@ class App extends Component {
     });
   }
   
+  handleEdChange = (e) => {
+    // need to add id.. this method may not work if state is overwritten
+    e.target.id === 'school' ?
+    this.setState({
+      edItem: {
+        school: e.target.value,
+      }
+    }) :
+    e.target.id === 'degree' ?
+    this.setState({
+      edItem: {
+        degree: e.target.value
+      }
+    }) :
+    this.setState({
+      edItem: {
+        years: e.target.value
+      }
+    });
+  }
+
   render(){
-    const {contacts, item} = this.state;
+    const {contacts, item, ed, edItem} = this.state;
     return(
       <main>
         <button>Edit</button>
@@ -50,9 +78,14 @@ class App extends Component {
             <button type='button'>Add</button>
           </div>
           <div>
-            <Education />
+            <Education items={ed}/>
             {this.state.show && 
-            <input></input>}
+            <div>
+              <input id='school' name='school' value={this.edItem.school}></input>
+              <input id='degree' name='degree' value={this.edItem.degree}></input>
+              <input id='years' name='years' value={this.edItem.years}></input>
+
+            </div>}
 
           </div>
           <div>
