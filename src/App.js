@@ -28,7 +28,9 @@ class App extends Component {
 
       },
       education: {
-        text: '',
+        school: '',
+        degree: '',
+        years: '',
         id: uniqid(),
         show: true,
 
@@ -60,7 +62,8 @@ class App extends Component {
       return {
         education : {
           ...prev,
-          [name] : value
+          [name] : value,
+          id: this.state.id
         }
       }
     });
@@ -90,24 +93,27 @@ class App extends Component {
   }
   edSubmit = (e) => {
     this.setState((prev)=> {
-      const {name, value} = e.target;
+      // const {name, value} = e.target;
       return {
         ...prev,
-        [name]: this.state[name].concat(this.state.item),
-        item : {
-          text: '',
-          id: uniqid()
-        } 
+        educations: this.state.educations.concat(this.state.education),
+        education : {
+          school: '',
+          degree: '',
+          years: '',
+          id: uniqid(),
+          show: true,
+          } 
       }
     });
   }
   workSubmit = (e) => {
     this.setState((prev)=> {
-      const {name, value} = e.target;
+      // const {name, value} = e.target;
       return {
         ...prev,
-        [name]: this.state[name].concat(this.state.item),
-        item : {
+        career: this.state.career.concat(this.state.work),
+        work : {
           text: '',
           id: uniqid()
         } 
@@ -122,41 +128,49 @@ class App extends Component {
     return(
       <main>
         <button>Edit</button>
-            <Contact props={contact}/>
-            {contact.show && 
-              <form name='contacts' onSubmit={this.handleSubmit}>
-                <input id='firstName' type='text' name='firstName' onChange={this.handleChange} value={contact.firstName}></input>
-                <input id='lastName' type='text' name='lastName' onChange={this.handleChange} value={contact.lastName}></input>
-                <input id='email' type='text' name='email' onChange={this.handleChange} value={contact.email}></input>
-                <input id='phone' type='text' name='phone' onChange={this.handleChange} value={contact.phone}></input>
-                <input id='address' type='text' name='address' onChange={this.handleChange} value={contact.address}></input>
-                <input id='city' type='text' name='city' onChange={this.handleChange} value={contact.city}></input>
-                <input id='st' type='text' name='st' onChange={this.handleChange} value={contact.st}></input>
-                <input id='zip' type='text' name='zip' onChange={this.handleChange} value={contact.zip}></input>
-                <button type='submit'>Submit</button>
+        <Contact 
+          firstName={contact.firstName}
+          lastName={contact.lastName}
+          email={contact.email}
+          phone={contact.phone}
+          address={contact.address}
+          city={contact.city}
+          st={contact.state}
+          zip={contact.zip}
+        />
+          {contact.show && 
+            <form name='contacts' onSubmit={this.handleSubmit}>
+              <input id='firstName' type='text' name='firstName' onChange={this.handleChange} value={contact.firstName}></input>
+              <input id='lastName' type='text' name='lastName' onChange={this.handleChange} value={contact.lastName}></input>
+              <input id='email' type='text' name='email' onChange={this.handleChange} value={contact.email}></input>
+              <input id='phone' type='text' name='phone' onChange={this.handleChange} value={contact.phone}></input>
+              <input id='address' type='text' name='address' onChange={this.handleChange} value={contact.address}></input>
+              <input id='city' type='text' name='city' onChange={this.handleChange} value={contact.city}></input>
+              <input id='st' type='text' name='st' onChange={this.handleChange} value={contact.st}></input>
+              <input id='zip' type='text' name='zip' onChange={this.handleChange} value={contact.zip}></input>
+              <button type='submit'>Submit</button>
 
-              </form>}
-              <hr></hr>
-
-            <Education items={educations}/>
-            {education.show && 
-              <form name='educations'>
-                {/* <input id='education' name='education' value={education.text} onChange={this.handleChange}></input> */}
-                <input id='school' name='school' value={this.edItem.school}></input>
-                <input id='degree' name='degree' value={this.edItem.degree}></input>
-                <input id='years' name='years' value={this.edItem.years}></input>
-                <button type='submit'>Add</button>
-
-
-              </form>}
-              <hr></hr>
-            
-            <Work items={career}/>
-            {work.show && 
-            <form name='career'>
-              <input id='work' name='work' value={work.text} onChange={this.handleChange}></input>
-              <button type='submit'>Add</button>
             </form>}
+            <hr></hr>
+
+          <Education items={educations}/>
+          {education.show && 
+            <form name='educations'>
+              <input id='school' name='school' value={education.school} onChange={this.edChange}></input>
+              <input id='degree' name='degree' value={education.degree} onChange={this.edChange}></input>
+              <input id='years' name='years' value={education.years} onChange={this.edChange}></input>
+              <button type='submit'>Add</button>
+
+
+            </form>}
+            <hr></hr>
+          
+          <Work items={career}/>
+          {work.show && 
+          <form name='career'>
+            <input id='work' name='work' value={work.text} onChange={this.handleChange}></input>
+            <button type='submit'>Add</button>
+          </form>}
       </main>
     )
   }

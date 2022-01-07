@@ -4,17 +4,16 @@ class Contact extends Component {
 
 
     render(){
-        const {contact} = this.props;
         return(
             <div>
-                <p>{contact.firstName}</p>
-                <p>{contact.lastName}</p>
-                <p>{contact.email}</p>
-                <p>{contact.phone}</p>
-                <p>{contact.address}</p>
-                <p>{contact.city}</p>
-                <p>{contact.st}</p>
-                <p>{contact.zip}</p>
+                <p>{this.props.firstName}</p>
+                <p>{this.props.lastName}</p>
+                <p>{this.props.email}</p>
+                <p>{this.props.phone}</p>
+                <p>{this.props.address}</p>
+                <p>{this.props.city}</p>
+                <p>{this.props.st}</p>
+                <p>{this.props.zip}</p>
             </div>
         )
     }
