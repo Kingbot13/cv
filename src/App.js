@@ -9,17 +9,12 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      show: true,
-      // contacts: [],
       educations: [],
       career: [],
       /* 
         add univeral method to store state
       */
-      // schools: [],
-      // degrees: [],
-      // years: [],
-      // add work related entries here
+
       contact: {
         firstName: '',
         lastName: '',
@@ -29,47 +24,69 @@ class App extends Component {
         city: '',
         st: '',
         zip: '',
+        show: true,
+
       },
       education: {
         text: '',
         id: uniqid(),
+        show: true,
+
       },
       work: {
         text: '',
         id: uniqid(),
+        show: true,
+
       },
     }
   }
 
-  handleChange = (e) => {
+  contactChange = (e) => {
     this.setState((prev)=> {
       const {name, value} = e.target;
       return {
-        ...prev,
-        [name] : {
-          text: value,
-          id: this.state.id
+        contact : {
+          ...prev,
+          [name] : value,
+          show: false,
         }
       }
-      // item: {
-      //   text: e.target.value,
-      //   id: this.state.item.id
-      // }
+    });
+  }
+  edChange = (e) => {
+    this.setState((prev)=> {
+      const {name, value} = e.target;
+      return {
+        education : {
+          ...prev,
+          [name] : value
+        }
+      }
+    });
+  }
+  workChange = (e) => {
+    this.setState((prev)=> {
+      const {name, value} = e.target;
+      return {
+        work : {
+          ...prev,
+          [name] : value
+        }
+      }
     });
   }
   
   handleSubmit = (e) => {
-    this.setState((prev)=> {
-      const {name, value} = e.target;
+    e.preventDefault();
+    this.setState((prev) => {
       return {
-        ...prev,
-        [name]: this.state[name].concat(this.state.item),
-        item : {
-          text: '',
-          id: uniqid()
-        } 
+        contact: {
+          ...prev,
+          show: false,
+        }
       }
-    });
+    })
   }
   edSubmit = (e) => {
     this.setState((prev)=> {
@@ -106,8 +123,8 @@ class App extends Component {
       <main>
         <button>Edit</button>
             <Contact props={contact}/>
-            {this.state.show && 
-              <form name='contacts'>
+            {contact.show && 
+              <form name='contacts' onSubmit={this.handleSubmit}>
                 <input id='firstName' type='text' name='firstName' onChange={this.handleChange} value={contact.firstName}></input>
                 <input id='lastName' type='text' name='lastName' onChange={this.handleChange} value={contact.lastName}></input>
                 <input id='email' type='text' name='email' onChange={this.handleChange} value={contact.email}></input>
@@ -119,20 +136,23 @@ class App extends Component {
                 <button type='submit'>Submit</button>
 
               </form>}
+              <hr></hr>
 
             <Education items={educations}/>
-            {this.state.show && 
+            {education.show && 
               <form name='educations'>
-                <input id='education' name='education' value={education.text} onChange={this.handleChange}></input>
-                {/* <input id='school' name='school' value={this.edItem.school}></input>
+                {/* <input id='education' name='education' value={education.text} onChange={this.handleChange}></input> */}
+                <input id='school' name='school' value={this.edItem.school}></input>
                 <input id='degree' name='degree' value={this.edItem.degree}></input>
-                <input id='years' name='years' value={this.edItem.years}></input> */}
+                <input id='years' name='years' value={this.edItem.years}></input>
                 <button type='submit'>Add</button>
 
 
               </form>}
+              <hr></hr>
+            
             <Work items={career}/>
-            {this.state.show && 
+            {work.show && 
             <form name='career'>
               <input id='work' name='work' value={work.text} onChange={this.handleChange}></input>
               <button type='submit'>Add</button>
