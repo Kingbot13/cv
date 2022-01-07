@@ -26,11 +26,15 @@ class App extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({
-      item: {
-        text: e.target.value,
-        id: this.state.item.id
+    this.setState((prev)=> {
+      return {
+        ...prev,
+        
       }
+      // item: {
+      //   text: e.target.value,
+      //   id: this.state.item.id
+      // }
     });
   }
   
@@ -45,7 +49,7 @@ class App extends Component {
   }
   
   handleEdChange = (e) => {
-    // need to add id.. this method may not work if state is overwritten
+    
     e.target.id === 'school' ?
     this.setState({
       edItem: {
