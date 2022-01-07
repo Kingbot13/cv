@@ -10,16 +10,25 @@ class App extends Component {
     super();
     this.state = {
       show: true,
-      contacts: [],
+      // contacts: [],
       educations: [],
       career: [],
+      /* 
+        add univeral method to store state
+      */
       // schools: [],
       // degrees: [],
       // years: [],
       // add work related entries here
       contact: {
-        text: '',
-        id: uniqid(),
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        address: '',
+        city: '',
+        st: '',
+        zip: '',
       },
       education: {
         text: '',
@@ -29,7 +38,6 @@ class App extends Component {
         text: '',
         id: uniqid(),
       },
-
     }
   }
 
@@ -63,38 +71,52 @@ class App extends Component {
       }
     });
   }
+  edSubmit = (e) => {
+    this.setState((prev)=> {
+      const {name, value} = e.target;
+      return {
+        ...prev,
+        [name]: this.state[name].concat(this.state.item),
+        item : {
+          text: '',
+          id: uniqid()
+        } 
+      }
+    });
+  }
+  workSubmit = (e) => {
+    this.setState((prev)=> {
+      const {name, value} = e.target;
+      return {
+        ...prev,
+        [name]: this.state[name].concat(this.state.item),
+        item : {
+          text: '',
+          id: uniqid()
+        } 
+      }
+    });
+  }
   
-  // handleEdChange = (e) => {
-    
-  //   e.target.id === 'school' ?
-  //   this.setState({
-  //     edItem: {
-  //       school: e.target.value,
-  //     }
-  //   }) :
-  //   e.target.id === 'degree' ?
-  //   this.setState({
-  //     edItem: {
-  //       degree: e.target.value
-  //     }
-  //   }) :
-  //   this.setState({
-  //     edItem: {
-  //       years: e.target.value
-  //     }
-  //   });
-  // }
+
 
   render(){
-    const {contacts, contact, educations, education, work, career} = this.state;
+    const {contact, educations, education, work, career} = this.state;
     return(
       <main>
         <button>Edit</button>
-            <Contact items={contacts}/>
+            <Contact props={contact}/>
             {this.state.show && 
               <form name='contacts'>
-                <input id='contact' type='text' name='contact' onChange={this.handleChange} value={contact.text}></input>
-                <button type='submit'>Add</button>
+                <input id='firstName' type='text' name='firstName' onChange={this.handleChange} value={contact.firstName}></input>
+                <input id='lastName' type='text' name='lastName' onChange={this.handleChange} value={contact.lastName}></input>
+                <input id='email' type='text' name='email' onChange={this.handleChange} value={contact.email}></input>
+                <input id='phone' type='text' name='phone' onChange={this.handleChange} value={contact.phone}></input>
+                <input id='address' type='text' name='address' onChange={this.handleChange} value={contact.address}></input>
+                <input id='city' type='text' name='city' onChange={this.handleChange} value={contact.city}></input>
+                <input id='st' type='text' name='st' onChange={this.handleChange} value={contact.st}></input>
+                <input id='zip' type='text' name='zip' onChange={this.handleChange} value={contact.zip}></input>
+                <button type='submit'>Submit</button>
 
               </form>}
 
