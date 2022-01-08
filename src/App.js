@@ -11,9 +11,8 @@ class App extends Component {
     this.state = {
       educations: [],
       career: [],
-      /* 
-        add univeral method to store state
-      */
+      contacts: [],
+
 
       contact: {
         firstName: '',
@@ -84,8 +83,9 @@ class App extends Component {
     e.preventDefault();
     this.setState((prev) => {
       return {
+        ...prev,
+        contacts: this.state.contacts.concat(this.state.contact),
         contact: {
-          ...prev,
           show: false,
         }
       }
@@ -124,19 +124,19 @@ class App extends Component {
 
 
   render(){
-    const {contact, educations, education, work, career} = this.state;
+    const {contact, contacts, educations, education, work, career} = this.state;
     return(
       <main>
         <button>Edit</button>
         <Contact 
-          firstName={contact.firstName}
-          lastName={contact.lastName}
-          email={contact.email}
-          phone={contact.phone}
-          address={contact.address}
-          city={contact.city}
-          st={contact.state}
-          zip={contact.zip}
+          firstName={contacts[0].firstName}
+          lastName={contacts[0].lastName}
+          email={contacts[0].email}
+          phone={contacts[0].phone}
+          address={contacts[0].address}
+          city={contacts[0].city}
+          st={contacts[0].state}
+          zip={contacts[0].zip}
         />
           {contact.show && 
             <form name='contacts' onSubmit={this.handleSubmit}>
