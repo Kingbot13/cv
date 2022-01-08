@@ -42,19 +42,19 @@ class App extends Component {
 
       },
     }
+    this.contactChange = this.contactChange.bind(this);
   }
 
   contactChange = (e) => {
-    this.setState((prev)=> {
-      const {name, value} = e.target;
-      return {
+    const {name, value} = e.target;
+    console.log('before', this.state.contact);
+    this.setState({
         contact : {
-          ...prev,
           [name] : value,
-          show: false,
         }
-      }
     });
+    console.log('after', this.state.contact);
+    console.log('value', value);
   }
   edChange = (e) => {
     this.setState((prev)=> {
@@ -128,29 +128,38 @@ class App extends Component {
     return(
       <main>
         <button>Edit</button>
-        <Contact 
-          firstName={contact.firstName}
-          lastName={contact.lastName}
-          email={contact.email}
-          phone={contact.phone}
-          address={contact.address}
-          city={contact.city}
-          st={contact.state}
-          zip={contact.zip}
-        />
-          {contact.show && 
+          {/* {contact.show &&  */}
             <form name='contacts' onSubmit={this.handleSubmit}>
-              <input id='firstName' type='text' name='firstName' onChange={this.handleChange} value={contact.firstName}></input>
-              <input id='lastName' type='text' name='lastName' onChange={this.handleChange} value={contact.lastName}></input>
-              <input id='email' type='text' name='email' onChange={this.handleChange} value={contact.email}></input>
-              <input id='phone' type='text' name='phone' onChange={this.handleChange} value={contact.phone}></input>
-              <input id='address' type='text' name='address' onChange={this.handleChange} value={contact.address}></input>
-              <input id='city' type='text' name='city' onChange={this.handleChange} value={contact.city}></input>
-              <input id='st' type='text' name='st' onChange={this.handleChange} value={contact.st}></input>
-              <input id='zip' type='text' name='zip' onChange={this.handleChange} value={contact.zip}></input>
+              <label htmlFor='firstname'>First Name</label>
+              <input id='firstName' type='text' name='firstName' onChange={this.contactChange} value={contact.firstName} placeholder='first name'></input>
+              <label htmlFor='lastName'>Last Name</label>
+              <input id='lastName' type='text' name='lastName' onChange={this.contactChange} value={contact.lastName}></input>
+              <label htmlFor='email'>email</label>
+              <input id='email' type='text' name='email' onChange={this.contactChange} value={contact.email}></input>
+              <label htmlFor='phone'>Phone</label>
+              <input id='phone' type='text' name='phone' onChange={this.contactChange} value={contact.phone}></input>
+              <label htmlFor='address'>address</label>
+              <input id='address' type='text' name='address' onChange={this.contactChange} value={contact.address}></input>
+              <label htmlFor='city'>city</label>
+              <input id='city' type='text' name='city' onChange={this.contactChange} value={contact.city}></input>
+              <label htmlFor='st'>State</label>
+              <input id='st' type='text' name='st' onChange={this.contactChange} value={contact.st}></input>
+              <label htmlFor='zip'>zip</label>
+              <input id='zip' type='text' name='zip' onChange={this.contactChange} value={contact.zip}></input>
               <button type='submit'>Submit</button>
 
-            </form>}
+            </form> 
+            <Contact 
+              firstName={contact.firstName}
+              lastName={contact.lastName}
+              email={contact.email}
+              phone={contact.phone}
+              address={contact.address}
+              city={contact.city}
+              st={contact.state}
+              zip={contact.zip}
+           />
+
             <hr></hr>
 
           <Education items={educations}/>
