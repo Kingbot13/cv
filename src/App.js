@@ -47,41 +47,32 @@ class App extends Component {
 
   contactChange = (e) => {
     const {name, value} = e.target;
-    // console.log('before', this.state.contact);
-    this.setState({
-    
+    this.setState({   
         contact : {
           ...this.state.contact,
           [name] : value,
           id: this.state.contact.id,
         }
-
-      
     });
-    console.log('after', this.state.contact);
-    // console.log('value', value);
   }
   edChange = (e) => {
-    this.setState((prev)=> {
-      const {name, value} = e.target;
-      return {
+    const {name, value} = e.target;
+    this.setState({
         education : {
-          ...prev,
+          ...this.state.education,
           [name] : value,
           id: this.state.id
         }
-      }
     });
   }
   workChange = (e) => {
-    this.setState((prev)=> {
-      const {name, value} = e.target;
-      return {
+    const {name, value} = e.target;
+    this.setState({
         work : {
-          ...prev,
-          [name] : value
+          ...this.state.work,
+          [name] : value,
+          id: this.state.id,
         }
-      }
     });
   }
   
@@ -91,15 +82,10 @@ class App extends Component {
       return {
         ...prev,
         contacts: this.state.contacts.concat(this.state.contact),
-        // contact: {
-        //   show: false,
-        // }
       }
     });
   const contactForm = document.querySelector('.contact-form');
   contactForm.classList.toggle('hidden');
-  console.log('state', this.state.contacts);
-  console.log('object', this.state.contact);
 
   }
   edSubmit = (e) => {
@@ -140,7 +126,6 @@ class App extends Component {
       <main>
         <button>Edit</button>
         <Contact items={contacts} />
-          
             <form onSubmit={this.handleSubmit} className='contact-form'>
               <label htmlFor='firstname'>First Name</label>
               <input id='firstName' type='text' name='firstName' onChange={this.contactChange} value={contact.firstName}></input>
@@ -159,30 +144,27 @@ class App extends Component {
               <label htmlFor='zip'>zip</label>
               <input id='zip' type='text' name='zip' onChange={this.contactChange} value={contact.zip}></input>
               <button type='submit'>Submit</button>
-
             </form> 
-       
-
             <hr></hr>
 
           <Education items={educations}/>
-          {education.show && 
-            <form name='educations'>
+           
+            <form>
               <input id='school' name='school' value={education.school} onChange={this.edChange}></input>
               <input id='degree' name='degree' value={education.degree} onChange={this.edChange}></input>
               <input id='years' name='years' value={education.years} onChange={this.edChange}></input>
               <button type='submit'>Add</button>
 
 
-            </form>}
+            </form>
             <hr></hr>
           
           <Work items={career}/>
-          {work.show && 
+        
           <form>
             <input id='work' name='work' value={work.text} onChange={this.handleChange}></input>
             <button type='submit'>Add</button>
-          </form>}
+          </form>
       </main>
     )
   }
