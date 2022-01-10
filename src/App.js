@@ -24,6 +24,7 @@ class App extends Component {
         st: '',
         zip: '',
         show: true,
+        id: uniqid,
 
       },
       education: {
@@ -50,6 +51,7 @@ class App extends Component {
     this.setState({
         contact : {
           [name] : value,
+          id: this.state.contact.id,
         }
     });
     console.log('after', this.state.contact);
@@ -128,20 +130,20 @@ class App extends Component {
     return(
       <main>
         <button>Edit</button>
-        <Contact 
-          firstName={contacts[0].firstName}
-          lastName={contacts[0].lastName}
-          email={contacts[0].email}
-          phone={contacts[0].phone}
-          address={contacts[0].address}
-          city={contacts[0].city}
-          st={contacts[0].state}
-          zip={contacts[0].zip}
+        <Contact items={contacts}
+          // firstName={contacts[0].firstName}
+          // lastName={contacts[0].lastName}
+          // email={contacts[0].email}
+          // phone={contacts[0].phone}
+          // address={contacts[0].address}
+          // city={contacts[0].city}
+          // st={contacts[0].state}
+          // zip={contacts[0].zip}
         />
-          {contact.show && 
-            <form name='contacts' onSubmit={this.handleSubmit}>
+          
+            <form onSubmit={this.handleSubmit} className='contactForm'>
               <label htmlFor='firstname'>First Name</label>
-              <input id='firstName' type='text' name='firstName' onChange={this.contactChange} value={contact.firstName} placeholder='first name'></input>
+              <input id='firstName' type='text' name='firstName' onChange={this.contactChange} value={contact.firstName}></input>
               <label htmlFor='lastName'>Last Name</label>
               <input id='lastName' type='text' name='lastName' onChange={this.contactChange} value={contact.lastName}></input>
               <label htmlFor='email'>email</label>
@@ -158,17 +160,8 @@ class App extends Component {
               <input id='zip' type='text' name='zip' onChange={this.contactChange} value={contact.zip}></input>
               <button type='submit'>Submit</button>
 
-            </form> }
-            <Contact 
-              firstName={contact.firstName}
-              lastName={contact.lastName}
-              email={contact.email}
-              phone={contact.phone}
-              address={contact.address}
-              city={contact.city}
-              st={contact.state}
-              zip={contact.zip}
-           />
+            </form> 
+       
 
             <hr></hr>
 
@@ -186,7 +179,7 @@ class App extends Component {
           
           <Work items={career}/>
           {work.show && 
-          <form name='career'>
+          <form>
             <input id='work' name='work' value={work.text} onChange={this.handleChange}></input>
             <button type='submit'>Add</button>
           </form>}
