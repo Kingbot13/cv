@@ -24,7 +24,6 @@ class App extends Component {
         city: '',
         st: '',
         zip: '',
-        show: true,
         id: uniqid(),
 
       },
@@ -43,7 +42,6 @@ class App extends Component {
 
       },
     }
-    this.contactChange = this.contactChange.bind(this);
   }
 
 
@@ -53,14 +51,14 @@ class App extends Component {
     this.setState({
     
         contact : {
-        
+          ...this.state.contact,
           [name] : value,
           id: this.state.contact.id,
         }
 
       
     });
-    // console.log('after', this.state.contact);
+    console.log('after', this.state.contact);
     // console.log('value', value);
   }
   edChange = (e) => {
