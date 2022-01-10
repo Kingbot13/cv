@@ -3,6 +3,7 @@ import Contact from './components/Contact';
 import Education from './components/Education';
 import Work from './components/Work';
 import uniqid from 'uniqid';
+import './styles/App.css';
 
 
 class App extends Component {
@@ -24,7 +25,7 @@ class App extends Component {
         st: '',
         zip: '',
         show: true,
-        id: uniqid,
+        id: uniqid(),
 
       },
       education: {
@@ -45,17 +46,22 @@ class App extends Component {
     this.contactChange = this.contactChange.bind(this);
   }
 
+
   contactChange = (e) => {
     const {name, value} = e.target;
-    console.log('before', this.state.contact);
+    // console.log('before', this.state.contact);
     this.setState({
+    
         contact : {
+        
           [name] : value,
           id: this.state.contact.id,
         }
+
+      
     });
-    console.log('after', this.state.contact);
-    console.log('value', value);
+    // console.log('after', this.state.contact);
+    // console.log('value', value);
   }
   edChange = (e) => {
     this.setState((prev)=> {
@@ -87,11 +93,16 @@ class App extends Component {
       return {
         ...prev,
         contacts: this.state.contacts.concat(this.state.contact),
-        contact: {
-          show: false,
-        }
+        // contact: {
+        //   show: false,
+        // }
       }
-    })
+    });
+  const contactForm = document.querySelector('.contact-form');
+  contactForm.classList.toggle('hidden');
+  console.log('state', this.state.contacts);
+  console.log('object', this.state.contact);
+
   }
   edSubmit = (e) => {
     this.setState((prev)=> {
@@ -130,18 +141,9 @@ class App extends Component {
     return(
       <main>
         <button>Edit</button>
-        <Contact items={contacts}
-          // firstName={contacts[0].firstName}
-          // lastName={contacts[0].lastName}
-          // email={contacts[0].email}
-          // phone={contacts[0].phone}
-          // address={contacts[0].address}
-          // city={contacts[0].city}
-          // st={contacts[0].state}
-          // zip={contacts[0].zip}
-        />
+        <Contact items={contacts} />
           
-            <form onSubmit={this.handleSubmit} className='contactForm'>
+            <form onSubmit={this.handleSubmit} className='contact-form'>
               <label htmlFor='firstname'>First Name</label>
               <input id='firstName' type='text' name='firstName' onChange={this.contactChange} value={contact.firstName}></input>
               <label htmlFor='lastName'>Last Name</label>
