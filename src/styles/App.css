@@ -1,14 +1,21 @@
 main{
     width: 900px;
-    height: 1000px;
+    height: auto;
     margin: 2rem auto;
     display: flex;
     flex-direction: column;
     background-color: white;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.29);
+    text-align: left;
 }
 
 footer{
     background-color: #3C8C7A;
+}
+
+h2{
+    margin-left: 2rem;
+    text-decoration: underline;
 }
 
 form{
@@ -23,6 +30,14 @@ button{
     border-radius: 10px;
     margin: auto;
     background-color: #53BF82;
+}
+
+button:hover {
+    background-color: #85d1a6;
+}
+
+main div{
+    margin-left: 2rem;
 }
 
 main button{
