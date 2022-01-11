@@ -43,6 +43,13 @@ class App extends Component {
     }
   }
 
+  toggleForms = (e) =>{
+    const forms = document.querySelectorAll('form');
+    forms.forEach((form) => {
+      form.classList.toggle('hidden');
+    });
+    e.target.textContent === 'Edit' ? e.target.textContent = 'Done' : e.target.textContent = 'Edit';
+  }
 
   contactChange = (e) => {
     const {name, value} = e.target;
@@ -83,8 +90,8 @@ class App extends Component {
         contacts: this.state.contacts.concat(this.state.contact),
       }
     });
-  const contactForm = document.querySelector('.contact-form');
-  contactForm.classList.toggle('hidden');
+  // const contactForm = document.querySelector('.contact-form');
+  // contactForm.classList.toggle('hidden');
 
   }
   edSubmit = (e) => {
@@ -127,7 +134,7 @@ class App extends Component {
     const {contact, contacts, educations, education, work, career} = this.state;
     return(
       <main>
-        <button>Edit</button>
+        <button type='button' onClick={this.toggleForms}>Done</button>
         <h2>Personal Info</h2>
         <Contact items={contacts} />
             <form onSubmit={this.handleSubmit} className='contact-form'>
