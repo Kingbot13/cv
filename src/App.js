@@ -134,6 +134,9 @@ class App extends Component {
     const {contact, contacts, educations, education, work, career} = this.state;
     return(
       <main>
+        <div className='title-section'>
+          <h1>CV Creator</h1>
+        </div>
         <button type='button' onClick={this.toggleForms}>Done</button>
         <h2>Personal Info</h2>
         <Contact items={contacts} />
@@ -143,7 +146,7 @@ class App extends Component {
               <label htmlFor='lastName'>Last Name</label>
               <input id='lastName' type='text' name='lastName' onChange={this.contactChange} value={contact.lastName}></input>
               <label htmlFor='email'>email</label>
-              <input id='email' type='text' name='email' onChange={this.contactChange} value={contact.email}></input>
+              <input id='email' type='email' name='email' onChange={this.contactChange} value={contact.email}></input>
               <label htmlFor='phone'>Phone</label>
               <input id='phone' type='text' name='phone' onChange={this.contactChange} value={contact.phone}></input>
               <label htmlFor='address'>address</label>
@@ -158,8 +161,7 @@ class App extends Component {
             </form> 
             <hr></hr>
           <h2>Education</h2>
-          <Education items={educations}/>
-           
+          <Education items={educations}/>          
             <form onSubmit={this.edSubmit}>
               <label htmlFor='school'>School</label>
               <input id='school' name='school' value={education.school} onChange={this.edChange}></input>
@@ -171,8 +173,7 @@ class App extends Component {
             </form>
             <hr></hr>
           <h2>Work Experience</h2>
-          <Work items={career}/>
-        
+          <Work items={career}/>       
           <form onSubmit={this.workSubmit}>
             <label htmlFor='company'>Company</label>
             <input id='company' name='company' value={work.company} onChange={this.workChange}></input>
