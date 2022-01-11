@@ -13,8 +13,6 @@ class App extends Component {
       educations: [],
       career: [],
       contacts: [],
-
-
       contact: {
         firstName: '',
         lastName: '',
@@ -35,7 +33,10 @@ class App extends Component {
 
       },
       work: {
-        text: '',
+        company: '',
+        role: '',
+        years: '',
+        tasks: '',
         id: uniqid(),
 
       },
@@ -96,7 +97,6 @@ class App extends Component {
           degree: '',
           years: '',
           id: uniqid(),
-          show: true,
           } 
       }
     });
@@ -147,19 +147,27 @@ class App extends Component {
           <Education items={educations}/>
            
             <form onSubmit={this.edSubmit}>
+              <label htmlFor='school'>School</label>
               <input id='school' name='school' value={education.school} onChange={this.edChange}></input>
+              <label htmlFor='degree'>Degree</label>
               <input id='degree' name='degree' value={education.degree} onChange={this.edChange}></input>
+              <label htmlFor='years'>Years</label>
               <input id='years' name='years' value={education.years} onChange={this.edChange}></input>
               <button type='submit'>Add</button>
-
-
             </form>
             <hr></hr>
           <h2>Work Experience</h2>
           <Work items={career}/>
         
-          <form>
-            <input id='work' name='work' value={work.text} onChange={this.handleChange}></input>
+          <form onSubmit={this.workSubmit}>
+            <label htmlFor='company'>Company</label>
+            <input id='company' name='company' value={work.company} onChange={this.workChange}></input>
+            <label htmlFor='role'>Role</label>
+            <input id='role' name='role' value={work.role} onChange={this.workChange}></input>
+            <label htmlFor='years'>Years</label>
+            <input id='years' name='years' value={work.years} onChange={this.workChange}></input>
+            <label htmlFor='tasks'>Tasks</label>
+            <textarea id='tasks' name='tasks' value={work.tasks} onChange={this.workChange}></textarea>
             <button type='submit'>Add</button>
           </form>
       </main>
