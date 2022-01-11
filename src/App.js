@@ -90,8 +90,6 @@ class App extends Component {
         contacts: this.state.contacts.concat(this.state.contact),
       }
     });
-  // const contactForm = document.querySelector('.contact-form');
-  // contactForm.classList.toggle('hidden');
 
   }
   edSubmit = (e) => {
