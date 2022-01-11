@@ -22,6 +22,8 @@ form{
     display: flex;
     flex-direction: column;
     -ms-flex-align: start;
+    width: 80%;
+    margin: auto;
 }
 
 button{
@@ -30,10 +32,11 @@ button{
     border-radius: 10px;
     margin: auto;
     background-color: #53BF82;
+    transition: background-color 1s;
 }
 
 button:hover {
-    background-color: #85d1a6;
+    background-color: #9ddbb8;
 }
 
 main div{

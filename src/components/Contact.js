@@ -12,7 +12,7 @@ class Contact extends Component {
             {items.map((item)=>{
                 return (
                     <div key={item.id} className="container">
-                        <p>{item.firstName} {item.lastName}</p>
+                        <p className="name">{item.firstName} {item.lastName}</p>
                         <p>{item.email}</p>
                         <p>{item.phone}</p>
                         <p>{item.address}</p>

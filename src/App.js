@@ -149,7 +149,7 @@ class App extends Component {
                 <label htmlFor='email'>email</label>
                 <input id='email' type='email' name='email' onChange={this.contactChange} value={contact.email}></input>
                 <label htmlFor='phone'>Phone</label>
-                <input id='phone' type='text' name='phone' onChange={this.contactChange} value={contact.phone}></input>
+                <input id='phone' type='tel' name='phone' onChange={this.contactChange} value={contact.phone}></input>
                 <label htmlFor='address'>address</label>
                 <input id='address' type='text' name='address' onChange={this.contactChange} value={contact.address}></input>
                 <label htmlFor='city'>city</label>
