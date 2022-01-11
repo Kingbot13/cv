@@ -87,7 +87,9 @@ class App extends Component {
   contactForm.classList.toggle('hidden');
 
   }
-  edSubmit = () => {
+  edSubmit = (e) => {
+    e.preventDefault();
+
     this.setState((prev)=> {
       return {
         ...prev,
@@ -101,13 +103,18 @@ class App extends Component {
       }
     });
   }
-  workSubmit = () => {
+  workSubmit = (e) => {
+    e.preventDefault();
+
     this.setState((prev)=> {
       return {
         ...prev,
         career: this.state.career.concat(this.state.work),
         work : {
-          text: '',
+          company: '',
+          role: '',
+          years: '',
+          tasks: '',
           id: uniqid()
         } 
       }
