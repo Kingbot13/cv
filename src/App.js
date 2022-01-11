@@ -133,7 +133,7 @@ class App extends Component {
   render(){
     const {contact, contacts, educations, education, work, career} = this.state;
     return(
-      <div>
+      <div className='container'>
           <div className='title-section'>
             <h1>CV Creator</h1>
           </div>

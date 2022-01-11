@@ -1,7 +1,7 @@
 main{
-    width: 80vw;
+    width: 900px;
     height: 1000px;
-    margin: auto;
+    margin: 2rem auto;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -11,8 +11,32 @@ footer{
     background-color: #3C8C7A;
 }
 
+form{
+    display: flex;
+    flex-direction: column;
+    -ms-flex-align: start;
+}
+
+button{
+    width: 4rem;
+    height: 2rem;
+    border-radius: 10px;
+    margin: auto;
+    background-color: #53BF82;
+}
+
+main button{
+    margin: 2rem auto 0;
+}
+
+.container{
+    height: 100%;
+}
+
 .title-section{
     background-color: #1BAEC4;
+    margin-bottom: 2rem;
+    color: white;
 }
 
 .hidden{
