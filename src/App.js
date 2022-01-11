@@ -32,13 +32,11 @@ class App extends Component {
         degree: '',
         years: '',
         id: uniqid(),
-        show: true,
 
       },
       work: {
         text: '',
         id: uniqid(),
-        show: true,
 
       },
     }
@@ -61,7 +59,7 @@ class App extends Component {
         education : {
           ...this.state.education,
           [name] : value,
-          id: this.state.id
+          id: this.state.education.id
         }
     });
   }
@@ -71,7 +69,7 @@ class App extends Component {
         work : {
           ...this.state.work,
           [name] : value,
-          id: this.state.id,
+          id: this.state.work.id,
         }
     });
   }
@@ -88,9 +86,8 @@ class App extends Component {
   contactForm.classList.toggle('hidden');
 
   }
-  edSubmit = (e) => {
+  edSubmit = () => {
     this.setState((prev)=> {
-      // const {name, value} = e.target;
       return {
         ...prev,
         educations: this.state.educations.concat(this.state.education),
@@ -104,9 +101,8 @@ class App extends Component {
       }
     });
   }
-  workSubmit = (e) => {
+  workSubmit = () => {
     this.setState((prev)=> {
-      // const {name, value} = e.target;
       return {
         ...prev,
         career: this.state.career.concat(this.state.work),
@@ -125,6 +121,7 @@ class App extends Component {
     return(
       <main>
         <button>Edit</button>
+        <h2>Personal Info</h2>
         <Contact items={contacts} />
             <form onSubmit={this.handleSubmit} className='contact-form'>
               <label htmlFor='firstname'>First Name</label>
@@ -146,10 +143,10 @@ class App extends Component {
               <button type='submit'>Submit</button>
             </form> 
             <hr></hr>
-
+          <h2>Education</h2>
           <Education items={educations}/>
            
-            <form>
+            <form onSubmit={this.edSubmit}>
               <input id='school' name='school' value={education.school} onChange={this.edChange}></input>
               <input id='degree' name='degree' value={education.degree} onChange={this.edChange}></input>
               <input id='years' name='years' value={education.years} onChange={this.edChange}></input>
@@ -158,7 +155,7 @@ class App extends Component {
 
             </form>
             <hr></hr>
-          
+          <h2>Work Experience</h2>
           <Work items={career}/>
         
           <form>
