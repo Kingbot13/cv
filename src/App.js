@@ -146,17 +146,17 @@ class App extends Component {
                 <input id='firstName' type='text' name='firstName' onChange={this.contactChange} value={contact.firstName}></input>
                 <label htmlFor='lastName'>Last Name</label>
                 <input id='lastName' type='text' name='lastName' onChange={this.contactChange} value={contact.lastName}></input>
-                <label htmlFor='email'>email</label>
+                <label htmlFor='email'>Email</label>
                 <input id='email' type='email' name='email' onChange={this.contactChange} value={contact.email}></input>
                 <label htmlFor='phone'>Phone</label>
                 <input id='phone' type='tel' name='phone' onChange={this.contactChange} value={contact.phone}></input>
-                <label htmlFor='address'>address</label>
+                <label htmlFor='address'>Address</label>
                 <input id='address' type='text' name='address' onChange={this.contactChange} value={contact.address}></input>
-                <label htmlFor='city'>city</label>
+                <label htmlFor='city'>City</label>
                 <input id='city' type='text' name='city' onChange={this.contactChange} value={contact.city}></input>
                 <label htmlFor='st'>State</label>
                 <input id='st' type='text' name='st' onChange={this.contactChange} value={contact.st}></input>
-                <label htmlFor='zip'>zip</label>
+                <label htmlFor='zip'>Zip</label>
                 <input id='zip' type='text' name='zip' onChange={this.contactChange} value={contact.zip}></input>
                 <button type='submit'>Submit</button>
               </form> 
