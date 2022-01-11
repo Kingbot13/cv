@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import '../styles/Contact.css';
 
 class Contact extends Component {
 
@@ -10,7 +11,7 @@ class Contact extends Component {
 
             {items.map((item)=>{
                 return (
-                    <div key={item.id}>
+                    <div key={item.id} className="container">
                         <p>{item.firstName}</p>
                         <p>{item.lastName}</p>
                         <p>{item.email}</p>

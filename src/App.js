@@ -133,60 +133,65 @@ class App extends Component {
   render(){
     const {contact, contacts, educations, education, work, career} = this.state;
     return(
-      <main>
-        <div className='title-section'>
-          <h1>CV Creator</h1>
-        </div>
-        <button type='button' onClick={this.toggleForms}>Done</button>
-        <h2>Personal Info</h2>
-        <Contact items={contacts} />
-            <form onSubmit={this.handleSubmit} className='contact-form'>
-              <label htmlFor='firstname'>First Name</label>
-              <input id='firstName' type='text' name='firstName' onChange={this.contactChange} value={contact.firstName}></input>
-              <label htmlFor='lastName'>Last Name</label>
-              <input id='lastName' type='text' name='lastName' onChange={this.contactChange} value={contact.lastName}></input>
-              <label htmlFor='email'>email</label>
-              <input id='email' type='email' name='email' onChange={this.contactChange} value={contact.email}></input>
-              <label htmlFor='phone'>Phone</label>
-              <input id='phone' type='text' name='phone' onChange={this.contactChange} value={contact.phone}></input>
-              <label htmlFor='address'>address</label>
-              <input id='address' type='text' name='address' onChange={this.contactChange} value={contact.address}></input>
-              <label htmlFor='city'>city</label>
-              <input id='city' type='text' name='city' onChange={this.contactChange} value={contact.city}></input>
-              <label htmlFor='st'>State</label>
-              <input id='st' type='text' name='st' onChange={this.contactChange} value={contact.st}></input>
-              <label htmlFor='zip'>zip</label>
-              <input id='zip' type='text' name='zip' onChange={this.contactChange} value={contact.zip}></input>
-              <button type='submit'>Submit</button>
-            </form> 
-            <hr></hr>
-          <h2>Education</h2>
-          <Education items={educations}/>          
-            <form onSubmit={this.edSubmit}>
-              <label htmlFor='school'>School</label>
-              <input id='school' name='school' value={education.school} onChange={this.edChange}></input>
-              <label htmlFor='degree'>Degree</label>
-              <input id='degree' name='degree' value={education.degree} onChange={this.edChange}></input>
+      <div>
+          <div className='title-section'>
+            <h1>CV Creator</h1>
+          </div>
+          <button type='button' onClick={this.toggleForms}>Done</button>
+        <main>
+          <h2>Personal Info</h2>
+          <Contact items={contacts} />
+              <form onSubmit={this.handleSubmit} className='contact-form'>
+                <label htmlFor='firstname'>First Name</label>
+                <input id='firstName' type='text' name='firstName' onChange={this.contactChange} value={contact.firstName}></input>
+                <label htmlFor='lastName'>Last Name</label>
+                <input id='lastName' type='text' name='lastName' onChange={this.contactChange} value={contact.lastName}></input>
+                <label htmlFor='email'>email</label>
+                <input id='email' type='email' name='email' onChange={this.contactChange} value={contact.email}></input>
+                <label htmlFor='phone'>Phone</label>
+                <input id='phone' type='text' name='phone' onChange={this.contactChange} value={contact.phone}></input>
+                <label htmlFor='address'>address</label>
+                <input id='address' type='text' name='address' onChange={this.contactChange} value={contact.address}></input>
+                <label htmlFor='city'>city</label>
+                <input id='city' type='text' name='city' onChange={this.contactChange} value={contact.city}></input>
+                <label htmlFor='st'>State</label>
+                <input id='st' type='text' name='st' onChange={this.contactChange} value={contact.st}></input>
+                <label htmlFor='zip'>zip</label>
+                <input id='zip' type='text' name='zip' onChange={this.contactChange} value={contact.zip}></input>
+                <button type='submit'>Submit</button>
+              </form> 
+              <hr></hr>
+            <h2>Education</h2>
+            <Education items={educations}/>          
+              <form onSubmit={this.edSubmit}>
+                <label htmlFor='school'>School</label>
+                <input id='school' name='school' value={education.school} onChange={this.edChange}></input>
+                <label htmlFor='degree'>Degree</label>
+                <input id='degree' name='degree' value={education.degree} onChange={this.edChange}></input>
+                <label htmlFor='years'>Years</label>
+                <input id='years' name='years' value={education.years} onChange={this.edChange}></input>
+                <button type='submit'>Add</button>
+              </form>
+              <hr></hr>
+            <h2>Work Experience</h2>
+            <Work items={career}/>       
+            <form onSubmit={this.workSubmit}>
+              <label htmlFor='company'>Company</label>
+              <input id='company' name='company' value={work.company} onChange={this.workChange}></input>
+              <label htmlFor='role'>Role</label>
+              <input id='role' name='role' value={work.role} onChange={this.workChange}></input>
               <label htmlFor='years'>Years</label>
-              <input id='years' name='years' value={education.years} onChange={this.edChange}></input>
+              <input id='years' name='years' value={work.years} onChange={this.workChange}></input>
+              <label htmlFor='tasks'>Tasks</label>
+              <textarea id='tasks' name='tasks' value={work.tasks} onChange={this.workChange}></textarea>
               <button type='submit'>Add</button>
             </form>
-            <hr></hr>
-          <h2>Work Experience</h2>
-          <Work items={career}/>       
-          <form onSubmit={this.workSubmit}>
-            <label htmlFor='company'>Company</label>
-            <input id='company' name='company' value={work.company} onChange={this.workChange}></input>
-            <label htmlFor='role'>Role</label>
-            <input id='role' name='role' value={work.role} onChange={this.workChange}></input>
-            <label htmlFor='years'>Years</label>
-            <input id='years' name='years' value={work.years} onChange={this.workChange}></input>
-            <label htmlFor='tasks'>Tasks</label>
-            <textarea id='tasks' name='tasks' value={work.tasks} onChange={this.workChange}></textarea>
-            <button type='submit'>Add</button>
-          </form>
-      </main>
-    )
+        </main>
+            <footer>
+              <p>Created by Dylan King</p>
+            </footer>
+      </div>
+    );
   }
 }
 

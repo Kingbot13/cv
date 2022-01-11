@@ -1,3 +1,20 @@
+main{
+    width: 80vw;
+    height: 1000px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+footer{
+    background-color: #3C8C7A;
+}
+
+.title-section{
+    background-color: #1BAEC4;
+}
+
 .hidden{
     display: none;
 }
